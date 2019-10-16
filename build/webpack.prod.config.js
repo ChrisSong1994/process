@@ -3,8 +3,10 @@ const path = require('path');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 拆分css样式的插件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // css 优化
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // 包依赖可视化
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin; // 包依赖可视化
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // js 优化
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const commonConfig = require('./webpack.common.config');
 
 module.exports = merge(commonConfig, {
@@ -32,6 +34,7 @@ module.exports = merge(commonConfig, {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash].css',
       chunkFilename: 'css/[id].[hash].css'
