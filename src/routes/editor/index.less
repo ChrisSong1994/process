@@ -18,5 +18,16 @@
 
   .content {
     background: url("../../assets/images/canvas_bg.jpg") repeat;
+    overflow: scroll;
+    position: relative;
+    #canvas{
+        width: 800px;
+        height: 120px;
+        background: @canvas_bg_color;
+        padding: 1000px;
+        box-sizing: border-box;
+        overflow: visible;
+        box-shadow: 3px 3px 6px @canvas_shadow_color;
+    }
   }
 }
