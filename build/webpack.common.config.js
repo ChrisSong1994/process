@@ -4,12 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // html 模版插件
 
 module.exports = {
   entry: './src/index.js',
-  resolve: {
-    alias: {
-      src: path.resolve(__dirname, './src')
-    },
-    extensions: ['.js', '.css', '.json', '.less']
-  },
   module: {
     rules: [
       {

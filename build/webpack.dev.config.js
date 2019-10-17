@@ -8,7 +8,7 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist')
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -23,14 +23,20 @@ module.exports = merge(commonConfig, {
     ]
   },
   devtool: 'source-map',
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, '../src')
+    },
+    extensions: ['.js', '.css', '.json', '.less']
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
   devServer: {
-    port: 8088, // 端口
-    open: true, // 自动打开浏览器
-    hot: true, // 开启热更新
+    port: 8088, 
+    open: true,
+    hot: true, 
     overlay: true, // 浏览器页面上显示错误
     historyApiFallback: true,
     proxy: {

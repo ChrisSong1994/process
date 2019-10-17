@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import Grid from './grid';
 
 const Canvas = () => {
-  return <div id="canvas">
+  const svgRef = useRef(null);
 
+  useEffect(() => {});
 
-
-      
-  </div>;
+  return (
+    <div id="canvas">
+      <Grid />
+      <svg ref={svgRef}>
+        <defs></defs>
+      </svg>
+    </div>
+  );
 };
 
 export default Canvas;

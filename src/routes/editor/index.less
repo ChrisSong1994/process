@@ -1,10 +1,13 @@
-@import "../../assets/styles/variable.less";
+@import "~src/assets/styles/variable.less";
+
 #editor {
   height: 100%;
   width: 100%;
+
   #header {
     border-bottom: 1px solid @tools_bd_color;
   }
+
   #footer {
     text-align: center;
     padding: 4px 50px;
@@ -14,20 +17,47 @@
     width: 200px;
     background: @operate_bg_color;
     border-right: 1px solid @panel_right_bd_color;
+
+    #panel {
+      overflow: auto;
+
+      .panel-content {
+        .panel-item {
+          display: inline-block;
+          position: relative;
+          width: 40px;
+          height: 40px;
+        margin: 2px;
+
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
   }
 
   .content {
     background: url("../../assets/images/canvas_bg.jpg") repeat;
-    overflow: scroll;
     position: relative;
-    #canvas{
-        width: 800px;
-        height: 120px;
-        background: @canvas_bg_color;
-        padding: 1000px;
-        box-sizing: border-box;
-        overflow: visible;
-        box-shadow: 3px 3px 6px @canvas_shadow_color;
+
+    #canvas {
+      z-index: 5;
+      overflow: hidden;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      background: @canvas_bg_color;
+      box-shadow: 3px 3px 6px @canvas_shadow_color;
+
+      >#grid {
+        z-index: -2;
+      }
     }
   }
 }
