@@ -1,12 +1,7 @@
 import React from 'react';
 import { Collapse, Icon } from 'antd';
 import { shapes } from 'src/modules/shapes/base';
-
-const commonStyle = {
-  fill: 'transparent',
-  stroke: '#000',
-  strokeWidth: 6
-};
+import DragBox from 'src/components/dragBox';
 
 const Panel = () => {
   return (
@@ -21,14 +16,21 @@ const Panel = () => {
         <Collapse.Panel header="基础图形" key="1">
           <section id="basic" className="panel-content">
             {shapes.map(shape => {
+              const data = {
+                key: shape.key,
+                name: shape.name,
+                width: shape.width,
+                height: shape.height
+              };
               return (
-                <div className="panel-item" key={shape.key}>
-                  {shape.component({
-                    width: '100%',
-                    height: null,
-                    style: commonStyle
-                  })}
-                </div>
+                <DragBox data={data} key={shape.key}>
+                  <div className="panel-item">
+                    {shape.component({
+                      width: '100%',
+                      height: null
+                    })}
+                  </div>
+                </DragBox>
               );
             })}
           </section>

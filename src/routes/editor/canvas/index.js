@@ -1,17 +1,29 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Grid from './grid';
+import Svg from './svg';
 
 const Canvas = () => {
-  const svgRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [{ width, height }, setCanvasSize] = useState({
+    width: 2000,
+    height: 1200
+  });
 
-  useEffect(() => {});
+  useEffect(() => {
+    setTimeout(() => {
+      const { width, height } = canvasRef.current.getBoundingClientRect();
+      setCanvasSize({ width, height });
+    }, 0);
+    window.onresize = () => {
+      const { width, height } = canvasRef.current.getBoundingClientRect();
+      setCanvasSize({ width, height });
+    };
+  }, []);
 
   return (
-    <div id="canvas">
-      <Grid />
-      <svg ref={svgRef}>
-        <defs></defs>
-      </svg>
+    <div id="canvas" ref={canvasRef}>
+      <Grid width={width} height={height} />
+      <Svg  />
     </div>
   );
 };
