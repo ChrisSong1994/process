@@ -17,13 +17,14 @@ const Panel = () => {
           <section id="basic" className="panel-content">
             {shapes.map(shape => {
               const data = {
-                key: shape.key,
+                shape: shape.shape,
                 name: shape.name,
                 width: shape.width,
-                height: shape.height
+                height: shape.height,
+                style: shape.style
               };
               return (
-                <DragBox data={data} key={shape.key}>
+                <DragBox data={data} key={shape.shape}>
                   <div className="panel-item">
                     {shape.component({
                       width: '100%',

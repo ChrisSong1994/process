@@ -4,7 +4,7 @@ import uuid from 'uuid';
 export const nodeParse = data => {
   return {
     id: data.id || uuid(),
-    key: data.key || null,
+    shape: data.shape || null,
     name: data.name || null,
     width: data.width || 160,
     height: data.height || 90,

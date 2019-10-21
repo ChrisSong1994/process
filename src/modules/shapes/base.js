@@ -3,12 +3,12 @@ import React from 'react';
 const commonStyle = {
   fill: 'transparent',
   stroke: '#000',
-  strokeWidth: 6
+  strokeWidth: 4
 };
 
 export const shapes = [
   {
-    key: 'rect',
+    shape: 'rect',
     name: '矩形',
     width: 160,
     height: 90,
@@ -28,7 +28,7 @@ export const shapes = [
     }
   },
   {
-    key: 'rhombus',
+    shape: 'rhombus',
     name: '菱形',
     width: 160,
     height: 90,
@@ -41,12 +41,12 @@ export const shapes = [
         style={Object.assign({}, commonStyle, style)}
         preserveAspectRatio="none"
       >
-        <path d="M75,2 L158,45 L75,88 L2,45 Z" />
+        <path d="M80,2 L158,45 L80,88 L2,45 Z" />
       </svg>
     )
   },
   {
-    key: 'ellipse',
+    shape: 'ellipse',
     name: '椭圆形',
     width: 160,
     height: 90,
@@ -72,7 +72,7 @@ export const shapes = [
     }
   },
   {
-    key: 'circle',
+    shape: 'circle',
     name: '圆形',
     width: 160,
     height: 160,
@@ -98,7 +98,7 @@ export const shapes = [
     }
   },
   {
-    key: 'roundedRectangle',
+    shape: 'roundedRectangle',
     name: '圆角矩形',
     width: 160,
     height: 90,
