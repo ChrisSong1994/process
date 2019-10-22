@@ -15,7 +15,16 @@ const ResizeAnchor = ({ x, y, width, height, onResize }) => {
       y: 0 - size / 2,
       key: 'lt',
       cursor: 'nwse-resize',
-      resize: () => {}
+      resize: (start, event) => {
+        const offsetX = event.x - start.x;
+        const offsetY = event.y - start.y;
+        return {
+          x: y + offsetY,
+          y: y + offsetY,
+          width: width + offsetX,
+          height: height + offsetY
+        };
+      }
     },
     {
       x: width - size / 2,
@@ -43,9 +52,9 @@ const ResizeAnchor = ({ x, y, width, height, onResize }) => {
         const offsetY = event.y - start.y;
         return {
           x,
-          y: y + offsetY,
+          y,
           width: width + offsetX,
-          height: height - offsetY
+          height: height + offsetY
         };
       }
     },
@@ -54,7 +63,16 @@ const ResizeAnchor = ({ x, y, width, height, onResize }) => {
       y: height - size / 2,
       key: 'lb',
       cursor: 'nesw-resize',
-      resize: () => {}
+      resize: (start, event) => {
+        const offsetX = event.x - start.x;
+        const offsetY = event.y - start.y;
+        return {
+          x: x + offsetX,
+          y,
+          width: width - offsetX,
+          height: height + offsetY
+        };
+      }
     }
   ];
   useEffect(() => {

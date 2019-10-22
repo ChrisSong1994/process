@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from 'src/constant';
 import { connect } from 'react-redux';
-import { add_node } from 'src/store/active';
+import { add_node, update_select_nodes } from 'src/store/active';
 import { nodeParse } from 'src/utils';
 import { shapes } from 'src/modules/shapes/base';
 import * as d3 from 'd3';
 import Node from './node';
 import _ from 'lodash';
 
-const Svg = ({ width, height, nodes, add_node }) => {
+const Svg = ({ width, height, nodes, add_node, update_select_nodes }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
     accept: ItemTypes.BOX,
@@ -19,15 +19,19 @@ const Svg = ({ width, height, nodes, add_node }) => {
         x: sourceOffsetX,
         y: sourceOffsetY
       } = monitor.getSourceClientOffset();
-      const x = sourceOffsetX - left ;
-      const y = sourceOffsetY - top ;
+      const x = sourceOffsetX - left;
+      const y = sourceOffsetY - top;
       add_node(nodeParse({ ...item, x, y }));
     }
   });
 
   useEffect(() => {
+    const svgEle = d3.select(ref.current);
     drop(ref);
-  }, [drop]);
+    svgEle.on('click', () => {
+      update_select_nodes([]);
+    });
+  }, [drop, ref, update_select_nodes]);
 
   const zoomed = zoomArea => {
     return d3
@@ -79,5 +83,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { add_node }
+  { add_node, update_select_nodes }
 )(Svg);

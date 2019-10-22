@@ -25,3 +25,10 @@ export const update_node = (id, data) => {
     payload: { id, data }
   };
 };
+
+export const update_select_nodes = nodes => {
+  return {
+    type: ActiveTypes.UPDATE_SELECT_NODES,
+    payload: {nodes}
+  };
+};

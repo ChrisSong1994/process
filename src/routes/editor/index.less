@@ -69,6 +69,16 @@
         top: 0;
         left: 0;
         z-index: 1;
+
+        .node {
+          &:hover {
+            cursor: pointer;
+          }
+
+          &.node-draging {
+            cursor: move;
+          }
+        }
       }
     }
   }
