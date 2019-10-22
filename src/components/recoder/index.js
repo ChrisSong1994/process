@@ -35,7 +35,7 @@ class Recorder {
   }
 
   push(rocord) {
-    this.future.clear();
+    this.future.length = 0;
     if (this.history.length === this.limit) {
       this.history.shift();
     }

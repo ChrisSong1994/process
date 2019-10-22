@@ -23,20 +23,14 @@ module.exports = merge(commonConfig, {
     ]
   },
   devtool: 'source-map',
-  resolve: {
-    alias: {
-      src: path.resolve(__dirname, '../src')
-    },
-    extensions: ['.js', '.css', '.json', '.less']
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   ],
   devServer: {
-    port: 8088, 
+    port: 8088,
     open: true,
-    hot: true, 
+    hot: true,
     overlay: true, // 浏览器页面上显示错误
     historyApiFallback: true,
     proxy: {

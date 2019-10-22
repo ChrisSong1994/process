@@ -9,7 +9,6 @@ import * as d3 from 'd3';
 import Node from './node';
 import _ from 'lodash';
 
-
 const Svg = ({ width, height, nodes, add_node }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
@@ -20,8 +19,8 @@ const Svg = ({ width, height, nodes, add_node }) => {
         x: sourceOffsetX,
         y: sourceOffsetY
       } = monitor.getSourceClientOffset();
-      const x = sourceOffsetX - left;
-      const y = sourceOffsetY - top;
+      const x = sourceOffsetX - left ;
+      const y = sourceOffsetY - top ;
       add_node(nodeParse({ ...item, x, y }));
     }
   });
